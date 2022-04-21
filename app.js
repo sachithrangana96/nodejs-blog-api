@@ -2,19 +2,24 @@ const express = require("express");
 const cors = require("cors");
 const http = require("http");
 
-
+const userRouter = require('./src/routes/user');
+const categoryRouter = require('./src/routes/category');
+const postRouter = require('./src/routes/post');
 
 const app = express();
 
 
 app.use(cors());
 app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+
 
 
 const prefix = "/v1";
-app.use(`${prefix}/user`);
-app.use(`${prefix}/post`);
-app.use(`${prefix}/category`);
+app.use(`${prefix}/user`,userRouter);
+app.use(`${prefix}/post`,postRouter);
+app.use(`${prefix}/category`,categoryRouter);
 
 
 

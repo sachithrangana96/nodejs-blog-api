@@ -23,16 +23,24 @@ module.exports = class User{
         return DB.dbQuery(`SELECT * FROM ${this.tableName} WHERE status = ?`,[st],cb);
     }
 
-    static insert(data,cb){
-        return DB.dbQuery(`INSERT INTO ${this.tableName} SET ? `,data,cb);
+    static getAllCount(st,cb){
+        return DB.dbQuery(`SELECT COUNT(id) AS TOTAL FROM ${this.tableName()} WHERE status = ?`,[st],cb);
     }
 
-    static update(data,cb){
-        return DB.dbQuery(`UPDATE ${this.tableName} SET ? WHERE id = ? LIMIT 1`,[data,id],cb);
+    static findByEmail(email,cb){
+        return DB.dbQuery(`SELECT * FROM ${this.tableName()}  WHERE email=?`,[email],cb);
+    }
+
+    static insert(data,cb){
+        return DB.dbQuery(`INSERT INTO ${this.tableName()} SET ? `,data,cb);
+    }
+
+    static update(data,id,cb){
+        return DB.dbQuery(`UPDATE ${this.tableName()} SET ? WHERE id = ? LIMIT 1`,[data,id],cb);
     }
 
     static delete(id,cb){
-        return DB.dbQuery(`DELETE FROM ${this.tableName} WHERE id = ?`,[id],cb);
+        return DB.dbQuery(`DELETE FROM ${this.tableName()} WHERE id = ?`,[id],cb);
     }
     
 }

@@ -6,6 +6,7 @@ CREATE TABLE posts(
     description VARCHAR(255) NOT NULL,
     category_id INT NOT NULL,
     user_id INT NOT NULL,
+    status ENUM('ACTIVE', 'CANCELLED','ONGOING'),
     created_at INT NULL DEFAULT NULL,
     updated_at INT NULL DEFAULT NULL,
     PRIMARY KEY(id),

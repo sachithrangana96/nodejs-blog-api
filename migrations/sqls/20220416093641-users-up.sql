@@ -6,6 +6,7 @@ CREATE TABLE users(
     last_name VARCHAR(255) NOT NULL,
     profile VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     dob int NOT NULL,
     status ENUM('ACTIVE', 'CANCELLED','ONGOING'),
     created_at INT NULL DEFAULT NULL,
