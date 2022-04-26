@@ -207,7 +207,7 @@ module.exports.update = async(req,res,next)=>{
 }
 
 module.exports.deletePost = async(req,res,next) =>{
-    let postId = req.body.id;
+    let postId = req.params.id;
     async.waterfall([
        function(callback){
         Post.getPostById(postId,function(error,result){

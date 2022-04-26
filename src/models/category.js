@@ -15,7 +15,7 @@ module.exports = class Category{
     }
 
     static getCategoryById(id,cb){
-        return DB.dbQuery(`SELECT * FROM ${this.tableName()} WHERE id=?`,[id],cb);
+        return DB.dbQuery(`SELECT * FROM ${this.tableName()} WHERE id = ?`,[id],cb);
     }
 
     static getCategoryByStatus(st,cb){

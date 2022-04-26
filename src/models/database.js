@@ -15,10 +15,11 @@ class DB {
     static dbQuery(query, data, cb, debug=false){
         POOL.getConnection(function(err,conn){
             // if(conn) console.log("connections",conn)
-            conn.query(query,data, function(error,results,fields){
+            
+            conn.query(query,data, function(error,result,fields){
                 conn.release();
                 if(debug) console.log(this.sql);
-                cb(error,results);
+                cb(error,result);
             })
         })
     }

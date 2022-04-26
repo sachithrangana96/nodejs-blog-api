@@ -30,16 +30,19 @@ module.exports.getAllCategory = async(req,res,next) =>{
 
 
 module.exports.getCategoryById = async(req,res,next) =>{
+    let cat = req.params.id;
     async.waterfall([
         function(callback){
-            Category.getCategoryById(function(error,result){
+            Category.getCategoryById(cat,function(error,result){
                 if(error){
-                    return callback(error);
+                    // return callback(error);
+                    console.log(error)
                 }
 
                 if(result.length === 0){
                     res.status(404).json(responseMessage.commonResponse(responseMessage.RECORD_NOT_FOUND,'','CATEGORY NOT FOUND HERE'));
                 }
+              
                 callback(null,result);
             })
         },

@@ -47,9 +47,10 @@ module.exports.getAllUsers = async (req,res,next) => {
 }
 
 module.exports.getUserById = async (req,res,next) => {
+    let userId = req.params.id;
     async.waterfall([
         function (callback){
-            User.getUserById(function(error,result){
+            User.getUserById(userId,function(error,result){
                 if(error){
                     callback(error)
                 }

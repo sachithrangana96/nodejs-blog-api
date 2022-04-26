@@ -6,7 +6,32 @@ const userRouter = require('./src/routes/user');
 const categoryRouter = require('./src/routes/category');
 const postRouter = require('./src/routes/post');
 
+const swaggerUI = require("swagger-ui-express")
+const swaggerJsDoc = require("swagger-jsdoc")
+
+
+const options = {
+    definition:{
+        openapi:"3.0.0",
+        info:{
+            title:"Blog API",
+            version:"1.0.0",
+            description:"A Simple Express Blog API"
+        },
+        servers:[
+            {
+                url:"http://localhost:4000/v1"
+            }
+        ],
+       
+    },
+    apis:["./src/routes/*.js"]
+}
+
+const specs =  swaggerJsDoc(options)
 const app = express();
+
+app.use("/api-docs",swaggerUI.serve,swaggerUI.setup(specs))
 
 
 app.use(cors());
