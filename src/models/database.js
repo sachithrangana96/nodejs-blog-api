@@ -4,10 +4,10 @@ const mysql = require('mysql');
 
 const POOL = mysql.createPool({
     connectionLimit : 10,
-    localhost:'localhost',
-    user:'root',
-    password:'password',
-    database:'blog-project'
+    localhost:process.env.RDS_HOSTNAME,
+    user:process.env.RDS_USERNAME,
+    password:process.env.RDS_PASSWORD,
+    database:process.env.RDS_PORT
 })
 
 class DB {
